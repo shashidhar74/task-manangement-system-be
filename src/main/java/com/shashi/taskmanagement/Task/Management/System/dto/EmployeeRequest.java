@@ -10,10 +10,14 @@ public record EmployeeRequest(
          String designation,
          String department,
           String email,
+         String image,
          String created_by,
          String modified_by,
          LocalDateTime created_on,
          LocalDateTime updatedOn
 
 ) {
+    public EmployeeRequest withImage(String image) {
+        return new EmployeeRequest(id, name, designation, department, email, image, created_by, modified_by, created_on, updatedOn);
+    }
 }

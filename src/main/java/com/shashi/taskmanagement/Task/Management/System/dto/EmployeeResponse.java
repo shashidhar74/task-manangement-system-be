@@ -8,6 +8,7 @@ public record EmployeeResponse(
         String designation,
         String department,
         String email,
+        String image,
         String created_by,
         String modified_by,
         LocalDateTime createdOn,

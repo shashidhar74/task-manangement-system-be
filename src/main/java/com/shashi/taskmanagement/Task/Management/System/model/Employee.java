@@ -23,6 +23,7 @@ public class Employee {
     private String designation;
     private String department;
     private String email;
+    private String image;
     private String created_by;
     private String modified_by;
     @Column(name = "created_on")

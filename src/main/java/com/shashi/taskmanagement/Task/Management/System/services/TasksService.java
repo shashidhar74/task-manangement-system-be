@@ -55,7 +55,7 @@ public class TasksService {
                 maxId = Math.max(maxId, Integer.parseInt(numericPart));
             }
         }
-        return maxId + 1; // Return the next ID as an integer
+        return maxId + 1;
     }
 
     public void updateTask(List<Long> taskIds, List<TasksRequest> tasksRequests) {
@@ -103,5 +103,25 @@ public class TasksService {
                         tasks.getModifiedBy()
                 ))
                 .collect(Collectors.toList());
+    }
+
+    public List<TaskResponse> findProjectsByProjectName(String project_namae){
+        return tasksRepository.findProjectsByProjectName(project_namae)
+                .stream()
+                .map(taskDetails -> new TaskResponse(
+                        taskDetails.getId(),
+                        taskDetails.getTaskId(),
+                        taskDetails.getTaskName(),
+                        taskDetails.getProjectName(),
+                        taskDetails.getOwner(),
+                        taskDetails.getStatus(),
+                        taskDetails.getStartDate(),
+                        taskDetails.getDueDate(),
+                        taskDetails.getPriority(),
+                        taskDetails.getCreatedOn(),
+                        taskDetails.getCreatedBy(),
+                        taskDetails.getModifiedOn(),
+                        taskDetails.getModifiedBy()
+                )).toList();
     }
 }

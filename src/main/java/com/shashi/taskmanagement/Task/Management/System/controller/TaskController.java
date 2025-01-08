@@ -1,5 +1,6 @@
 package com.shashi.taskmanagement.Task.Management.System.controller;
 
+import com.shashi.taskmanagement.Task.Management.System.dto.EmployeeResponseForQuery;
 import com.shashi.taskmanagement.Task.Management.System.dto.TaskResponse;
 import com.shashi.taskmanagement.Task.Management.System.dto.TasksRequest;
 import com.shashi.taskmanagement.Task.Management.System.services.TasksService;
@@ -33,5 +34,11 @@ public class TaskController {
     @ResponseStatus(HttpStatus.OK)
     public List<TaskResponse>getAllTasks(){
         return tasksService.getAlltasks();
+    }
+
+    @GetMapping("/byProjectName")
+    public ResponseEntity<List<TaskResponse>>getProjectsByName(@RequestParam String projectName){
+        List<TaskResponse> projects= tasksService.findProjectsByProjectName(projectName);
+        return ResponseEntity.ok(projects);
     }
 }
